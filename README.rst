@@ -15,6 +15,7 @@ Usage
 -----
 
 Clone, Configure, Run::
+
   git clone git://github.com/isotoma/builddash.git
   edit web/settings.py and point BUILDBOT_URL to your buildbot instance
   ./manage.py runserver 0.0.0.0:8000 to start an instance.
