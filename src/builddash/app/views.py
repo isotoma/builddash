@@ -6,7 +6,7 @@ import json
 import urllib
 import time
 
-import settings
+import builddash.settings as settings
 
 def view(request):
     
