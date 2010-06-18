@@ -17,7 +17,10 @@ Usage
 Clone, Configure, Run::
 
   git clone git://github.com/isotoma/builddash.git
-  edit web/settings.py and point BUILDBOT_URL to your buildbot instance
-  ./manage.py runserver 0.0.0.0:8000 to start an instance.
+  python bootstrap.py
+  bin/buildout
+  copy src/builddash/settings.example to src/builddash/settings.py and edit as required
+  bin/django runserver
+  bin/test for running the tests
 
 As the app is django, deployment can also be carried out in any wsgi compliant webserver, which is beyond the scope of this document. See the excellent django docs for instructions on how this can be carried out. A sample wsgi file for this project will be provided, once it has been created ;)
