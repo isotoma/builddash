@@ -5,16 +5,41 @@ from django.shortcuts import render_to_response
 import json
 import urllib
 import time
+import datetime
 
 import builddash.settings as settings
+import builddash.models as models
 
-def view(request):
+def _get_builder_data(builder):
+    
+    try:
+        cached = models.MainCache.objects.filter(builder = builder).get_latest_by_time_stamp()
+        if cached.time_stamp + datetime.timedelta + 60 < datetime.datetime.now():
+            return cached
+    except:
+        pass
+        
+    models.MainCache.objects.filter(builder = builder)().delete()
+    models.BuilderCache.objects.filter(builder = builder).delete()
     
     data = urllib.urlopen(settings.BUILDBOT_URL + '/json').read()
     loaded_data = json.loads(data)
+    main = models.MainCache()
+    main.json = loaded_data
+    main.time_stamp = datetime.datetime.now()
+    main.builder = builder
+    main.save()
+    return main.json
+    
+    
+
+def view(request):
+        
     
     categories = {}
     for k,z in loaded_data['builders'].iteritems():
+        
+        data = _get_builder_data(k)
         
         category = z['category']
         if not categories.has_key(category):
