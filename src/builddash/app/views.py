@@ -5,10 +5,12 @@ from django.shortcuts import render_to_response
 import json
 import urllib
 import time
-import datetime
 
 import builddash.settings as settings
+<<<<<<< HEAD:src/builddash/app/views.py
 import builddash.models as models
+=======
+>>>>>>> 51fad2b... None working attempt at caching:src/builddash/app/views.py
 
 
 def _get_builder_data(builder):
@@ -23,18 +25,7 @@ def _get_builder_data(builder):
     models.MainCache.objects.filter(builder = builder)().delete()
     models.BuilderCache.objects.filter(builder = builder).delete()
     
-    now = datetime.now()
-    try:
-        cache = models.JSONCache.objects.latest('retrieval_time')
-        if cache.retrieval_time + datetime.timedelta(seconds = settings.CACHE_TIMEOUT) < now:
-            cache = None
-    except:
-        pass
-    
-    if cache:
-        data = cache.main_json
-    else:
-        data = urllib.urlopen(settings.BUILDBOT_URL + '/json').read()
+    data = urllib.urlopen(settings.BUILDBOT_URL + '/json').read()
     loaded_data = json.loads(data)
     main = models.MainCache()
     main.json = loaded_data
@@ -59,10 +50,7 @@ def view(request):
         
         if z['cachedBuilds']:
             last_build_number = z['cachedBuilds'][-1:][0]
-            if cache:
-                build_info = cache.builders_json
-            else:
-                build_info = urllib.urlopen(settings.BUILDBOT_URL + '/json/builders/' + k + '/builds/' + str(last_build_number)).read()
+            build_info = urllib.urlopen(settings.BUILDBOT_URL + '/json/builders/' + k + '/builds/' + str(last_build_number)).read()
             parsed_build_info = json.loads(build_info)
             if parsed_build_info['text']:
                 status = parsed_build_info['text'][0]
