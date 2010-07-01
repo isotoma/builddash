@@ -30,6 +30,21 @@ function insert_to_page(i, item) {
     
 }
 
+function insert_build_to_page(i, item) {
+
+    for (x in item)
+        {
+            var item_html = "<td class='build-item'>";
+            
+            item_html += "<h3>" + x + "</h3>";
+            
+            item_html += "</td>";
+            div_to_insert.append($(item_html));
+            break;
+        }
+
+}
+
 
 function do_layout(json) {
 
@@ -47,7 +62,7 @@ function do_layout(json) {
     
     div_to_insert = $('#build');
     div_to_insert.children().remove()
-    $.each(json.build, insert_to_page );
+    $.each(json.build, insert_build_to_page );
     
     window.setTimeout(update, 10000);
 

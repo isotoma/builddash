@@ -23,6 +23,11 @@ table h2 {
     text-align: center;
 }
 
+table h3 {
+    text-align: center;
+    padding-top: 10px;
+}
+
 ul {
     margin: 0 auto;
     padding: 0;  
