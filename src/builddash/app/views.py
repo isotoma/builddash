@@ -65,9 +65,3 @@ def view(request):
     categories_to_send = json.dumps(seperated_cats)
     
     return HttpResponse(categories_to_send)
-    
-
-def dashboard(request):
-    """ View the dashboard """
-    
-    return render_to_response('dash.html')
