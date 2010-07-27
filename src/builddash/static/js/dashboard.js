@@ -1,10 +1,18 @@
-
-$( update );
+var timeout = 10000;
+$.ajaxSetup({
+    url: 'view/',
+    success: do_layout,
+    dataType: 'json',
+    timeout: timeout,
+    error: next,
+});
+$(update);
 
 
 function update()
 {
-    $.getJSON('view/', do_layout);
+    $('body').addClass('loading');
+    $.get();
 }
 
 var div_to_insert;
@@ -46,8 +54,12 @@ function insert_build_to_page(i, item) {
 }
 
 
-function do_layout(json) {
+function next() {
+    window.setTimeout(update, timeout);
+}
 
+function do_layout(json) {
+    $('body').removeClass('loading');
     div_to_insert = $('#building');
     div_to_insert.children().remove();
     $.each(json.building, insert_to_page);
@@ -64,6 +76,5 @@ function do_layout(json) {
     div_to_insert.children().remove()
     $.each(json.build, insert_build_to_page );
     
-    window.setTimeout(update, 10000);
-
+    next();
 }

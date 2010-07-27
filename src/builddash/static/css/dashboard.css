@@ -109,3 +109,9 @@ li img {
     font-style: italic;
     text-align: left;
 }
+
+.loading {
+    background-image:url('../img/building.png');
+    background-repeat:no-repeat;
+    background-position: top right;
+}
