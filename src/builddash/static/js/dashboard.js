@@ -59,22 +59,24 @@ function next() {
 }
 
 function do_layout(json) {
-    $('body').removeClass('loading');
-    div_to_insert = $('#building');
-    div_to_insert.children().remove();
-    $.each(json.building, insert_to_page);
+    if (json) {
+        $('body').removeClass('loading');
+        div_to_insert = $('#building');
+        div_to_insert.children().remove();
+        $.each(json.building, insert_to_page);
 
-    div_to_insert = $('#exception');
-    div_to_insert.children().remove()
-    $.each(json.exception, insert_to_page);
-    
-    div_to_insert = $('#failed');
-    div_to_insert.children().remove()
-    $.each(json.failed, insert_to_page );
-    
-    div_to_insert = $('#build');
-    div_to_insert.children().remove()
-    $.each(json.build, insert_build_to_page );
+        div_to_insert = $('#exception');
+        div_to_insert.children().remove()
+        $.each(json.exception, insert_to_page);
+
+        div_to_insert = $('#failed');
+        div_to_insert.children().remove()
+        $.each(json.failed, insert_to_page );
+
+        div_to_insert = $('#build');
+        div_to_insert.children().remove()
+        $.each(json.build, insert_build_to_page );
+    }
     
     next();
 }
