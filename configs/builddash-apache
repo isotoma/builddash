@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+
+        ServerName builddash.isotomadev.com
+        WSGIDaemonProcess builddash user=django group=django threads=10
+        WSGIProcessGroup builddash
+
+        ErrorLog /var/log/apache2/error-builddash.log
+        CustomLog /var/log/apache2/access-builddash.log combined
+
+        Alias /static/ /var/local/sites/builddash/src/builddash/static/
+
+        WSGIScriptAlias / /var/local/sites/builddash/bin/django.wsgi
+
+</VirtualHost>
+
