@@ -18,7 +18,9 @@ def view(request):
     for k,z in loaded_data['builders'].iteritems():
         
         category = z['category']
-        if not categories.has_key(category):
+        if isinstance(category, dict):
+            continue
+        if not categories.has_key(category) :
             categories[category] = {'state': '', 'builders': {}, }
         
         if z['cachedBuilds']:

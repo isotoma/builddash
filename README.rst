@@ -23,4 +23,4 @@ Clone, Configure, Run::
   bin/django runserver
   bin/test for running the tests
 
-As the app is django, deployment can also be carried out in any wsgi compliant webserver, which is beyond the scope of this document. See the excellent django docs for instructions on how this can be carried out. A sample wsgi file for this project will be provided, once it has been created ;)
+The buildout will create a wsgi file at bin/django.wsgi. This can then be used to host in a wsgi compliant webserver.
