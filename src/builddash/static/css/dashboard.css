@@ -120,3 +120,8 @@ a {
     text-decoration: none;
     color: white;
 }
+
+#building .build-item a {
+    color: black;
+}
+
