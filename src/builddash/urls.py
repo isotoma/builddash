@@ -21,6 +21,7 @@ urlpatterns = patterns('',
 
     url(r'^$', direct_to_template, {'template': 'dash.html', 'extra_context': {'buildbot_url': settings.BUILDBOT_URL}}, name = 'dashboard'),
     url(r'^view/', views.view, name = 'view'),
+    url(r'^messages/', views.get_messages, name = 'get_messages'),
 )
 
 

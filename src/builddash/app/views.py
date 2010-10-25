@@ -5,9 +5,11 @@ from django.utils import simplejson as json
 
 import urllib
 import time
+from datetime import datetime
 
 import builddash.settings as settings
 
+from builddash.app.models import Message
 
 def view(request):
     
@@ -67,3 +69,13 @@ def view(request):
     categories_to_send = json.dumps(seperated_cats)
     
     return HttpResponse(categories_to_send)
+
+def get_messages(request):
+    
+    messages = Message.objects.filter(show = True).filter(expiry_time__gt = datetime.now())
+    
+    message_texts = [message.message for message in messages]
+    messages_to_send = json.dumps(message_texts)
+    
+    return HttpResponse(messages_to_send)
+    

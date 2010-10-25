@@ -13,6 +13,7 @@ function update()
 {
     $('body').addClass('loading');
     $.get();
+    get_messages();
 }
 
 var div_to_insert;
@@ -79,4 +80,22 @@ function do_layout(json) {
     }
     
     next();
+}
+
+
+/*                          */
+/* Message retrieval */
+/* ******************** */
+
+function append_messages(i, item) {
+
+    $('#messages').append($('<span>' + item + '</span>'));
+
+}
+function get_messages() {
+    $.getJSON('messages/', function (data) {
+            $('#messages').children().remove();
+            $.each(data, append_messages);
+        }
+    );
 }

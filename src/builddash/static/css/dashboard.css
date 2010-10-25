@@ -125,3 +125,11 @@ a {
     color: black;
 }
 
+#messages {
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+#messages span {
+    padding-left: 10px;
+}
