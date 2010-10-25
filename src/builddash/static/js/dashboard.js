@@ -23,11 +23,11 @@ function insert_to_page(i, item) {
         {
             var item_html = "<td class='build-item'>";
             
-            item_html += "<h2>" + x + "</h2>";
+            item_html += "<h2><a href=" + buildbot_url + "/waterfall?category=" + x + ">" + x + "</a></h2>";
             
             item_html += "<ul>";
             $.each(item[x].builders, function (j, builder) {
-                item_html += "<li ><div><img src='static/img/"+ builder['status'] + ".png' />" + j + "</div><span class='state '>" + builder['status'] + "</span><span class='time'>" + builder['time'] + "</span></li>";            
+                item_html += "<li ><div><img src='static/img/"+ builder['status'] + ".png' /><a href=" + buildbot_url + "/builders/" + j +">" + j + "</a></div><span class='state '>" + builder['status'] + "</span><span class='time'>" + builder['time'] + "</span></li>";            
             });
             item_html += "</ul>";
             
@@ -44,7 +44,7 @@ function insert_build_to_page(i, item) {
         {
             var item_html = "<td class='build-item'>";
             
-            item_html += "<h3>" + x + "</h3>";
+            item_html += "<h3><a href=" + buildbot_url + "/waterfall?category=" + x + ">" + x + "</a></h3>";
             
             item_html += "</td>";
             div_to_insert.append($(item_html));

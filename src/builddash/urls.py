@@ -19,7 +19,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # (r'^admin/', include(admin.site.urls)),
 
-    url(r'^$', direct_to_template, {'template': 'dash.html'}, name = 'dashboard'),
+    url(r'^$', direct_to_template, {'template': 'dash.html', 'extra_context': {'buildbot_url': settings.BUILDBOT_URL}}, name = 'dashboard'),
     url(r'^view/', views.view, name = 'view'),
 )
 
