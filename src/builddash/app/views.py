@@ -72,7 +72,7 @@ def view(request):
 
 def get_messages(request):
     
-    messages = Message.objects.filter(show = True).filter(expiry_time__gt = datetime.now())
+    messages = Message.objects.filter(show = True).filter(expiry_time__gt = datetime.now()) | Message.objects.filter(show = True).filter(expiry_time = None)
     
     message_texts = [message.message for message in messages]
     messages_to_send = json.dumps(message_texts)
