@@ -17,7 +17,8 @@ Usage
 Clone, Configure, Run::
 
   git clone git://github.com/isotoma/builddash.git
-  python bootstrap.py
+  ./configure
+  python bootstrap.py --distribute --v 1.4.3
   bin/buildout
   copy src/builddash/settings.example to src/builddash/settings.py and edit as required
   bin/django runserver
