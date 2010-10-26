@@ -21,6 +21,7 @@ Clone, Configure, Run::
   python bootstrap.py --distribute --v 1.4.3
   bin/buildout
   copy src/builddash/settings.example to src/builddash/settings.py and edit as required
+  bin/django syncdb
   bin/django runserver
   bin/test for running the tests
 
