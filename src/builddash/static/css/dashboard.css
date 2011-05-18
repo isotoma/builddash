@@ -37,6 +37,9 @@ ul {
 li {
     list-style-type: none;
     padding-left: 5px;
+    -moz-border-radius:20px;
+    -webkit-border-radius:20px;
+    border-radius:20px;
 
 }
 
@@ -56,9 +59,22 @@ li img {
     clear: both;
 }
 
+#exception {
+    clear: both;
+}
+
+#offline {
+    clear: both;
+}
+
 #exception .build-item {
     background-color: #FF00FF;
     border: 5px solid #CC00CC;
+}
+
+#exception .build-item li {
+    background-color: #FF55FF;
+    border: 2px solid #FF00FF;
 }
 
 #building .build-item {
@@ -67,14 +83,39 @@ li img {
     color: black;
 }
 
+#building .build-item li {
+    background-color: #FFB;
+    border: 2px solid #FF6;
+}
+
 #build .build-item {
     background-color: #008000;
     border: 5px solid #006600;
 }
 
+#build .build-item li {
+    background-color: #00C000;
+    border: 2px solid #008000;
+}
+
 #failed .build-item {
-    background-color: C00;
-    border: 5px solid #900;
+    background-color: #900;
+    border: 5px solid #700;
+}
+
+#failed .build-item li {
+    background-color: #D00;
+    border: 2px solid #900;
+}
+
+#offline .build-item {
+    background-color: #222;
+    border: 5px solid #111;
+}
+
+#offline .build-item li {
+    background-color: #444;
+    border: 2px solid #222;
 }
 
 .build-item {
